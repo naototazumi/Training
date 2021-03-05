@@ -1,4 +1,4 @@
-===main===
+//main
 #include<bits/stdc++.h>
 using namespace std;
 int main() {
@@ -9,9 +9,9 @@ int main() {
   }
   cout << ans << "\n";
 }
-======
 
-===DFS===
+
+//DFS
 vector<vector<int>> V;
 vector<int> Map;
 int ans=0, inf=1<<30;
@@ -29,9 +29,8 @@ void dfs (int prev, int now, int cnt) {
   V = vector<vector<int>>(N, vector<int>(0));
   Map = vector<int>(N, inf);
 
-===double変数を15ケタ表示===
+//double変数を15ケタ表示
 cout<<fixed<<setprecision(15)<<ans<<"\n";
-======
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -94,5 +93,5 @@ for (auto i: V) {
 //delete a factor in vector
 V.erase(V.begin()+i);  
 
- __builtin_popcount(bit)
+__builtin_popcount(bit)
 __builtin_popcountll(bit)
