@@ -1,0 +1,3 @@
+
+__gcd(a,b) : O log(a) 
+reverse : log(n)
