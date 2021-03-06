@@ -1,3 +1,9 @@
 
-__gcd(a,b) : O log(a) 
-reverse : log(n)
+__gcd(a,b) : O(log(a)) 
+reverse : O(log(N))
+sort : O(N log(N))
+priority_queue : push、pop、top の計算量は O(log(N))
+lower_bound : O(log(N))
+set に対する操作 :  O(log(N))
+
+
