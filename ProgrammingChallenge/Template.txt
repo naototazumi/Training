@@ -21,7 +21,7 @@ int main() {
   // input
   int n, x; cin >> n >> x;
   vector<int64_t> a(n);
-  REP (i, n) {
+  REP(i, n) {
     cin >> a[i];
   }
 
