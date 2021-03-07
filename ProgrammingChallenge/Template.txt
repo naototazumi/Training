@@ -17,7 +17,6 @@ int main() {
   constexpr char endl = '\n';
 
   // input
-  while
   int n, x; cin >> n >> x;
   vector<int64_t> a(n);
   REP (i, n) {
