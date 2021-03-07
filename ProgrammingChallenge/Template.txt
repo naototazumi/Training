@@ -7,7 +7,7 @@
 using namespace std;
 using ll = long long;
 
-int64_t solve(int n, const vector<int64_t>& a) {
+ll solve(int n, const vector<ll>& a) {
   int tmp=0;
   // ...
   return tmp;
@@ -20,7 +20,7 @@ int main() {
 
   // input
   int n, x; cin >> n >> x;
-  vector<int64_t> a(n);
+  vector<ll> a(n);
   REP(i, n) {
     cin >> a[i];
   }
