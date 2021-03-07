@@ -141,3 +141,14 @@ V.erase(V.begin()+i);
 
 __builtin_popcount(bit)
 __builtin_popcountll(bit)
+
+//データ型と最大値
+https://qiita.com/hryshtk/items/b848ed3bd78f940ac5af
+short	32767
+unsigned short	65535
+int	2147483647
+unsigned int	4294967295
+long	9223372036854775807
+unsigned long	18446744073709551615
+long long	9223372036854775807
+unsigned long long	18446744073709551615
