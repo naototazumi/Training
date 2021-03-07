@@ -4,8 +4,8 @@
 ◆long long型とdouble型を使う、敢えてintとfloatを使う必要はない
 ◆細かい計算は関数化して外だしする
 ◆cinとgertchar()の挙動の違いを押さえる。cinは冒頭の段落を無視してくれるので、cinの後にgetcharを使うと段落を取ってしまう
+◆max関数、min関数はlong long型とそれ以外の型の比較だとエラーになる。それ以外の型をlong long(変数)でlong long型に変換してやる
 
-C++
 ◆getchar()
 getcharは、返り値はint型で、EOF(ファイル終端を示す特殊な値)を含む、標準入力から受け取った1文字のASCIIコードを返す標準ライブラリ関数。
 
