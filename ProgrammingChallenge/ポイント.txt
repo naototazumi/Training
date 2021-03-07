@@ -1,0 +1,166 @@
+◆重複を許す要素を数えるときにはsetを使う<
+◆数字が大きいときはforループ内含めて全てlong long型にする
+◆for文の中に繰り返し範囲の条件を記載できる
+◆long long型とdouble型を使う、敢えてintとfloatを使う必要はない
+◆細かい計算は関数化して外だしする
+◆cinとgertchar()の挙動の違いを押さえる。cinは冒頭の段落を無視してくれるので、cinの後にgetcharを使うと段落を取ってしまう
+
+C++
+◆getchar()
+getcharは、返り値はint型で、EOF(ファイル終端を示す特殊な値)を含む、標準入力から受け取った1文字のASCIIコードを返す標準ライブラリ関数。
+
+◆入力スピード
+getchar_unlocked > getchar > scanf > cin
+・getchar_unlockedはスレッドセーフでないバージョンのgetchar（）であるため、Windowsでは推奨されません。
+・getcharはchar型の入力の1文字を読み取るのに対し、scanfはcで使用可能なプリミティブ型のほとんどを読み取ることができる
+
+◆#define
+マクロ、ソースコードのコンパイル前のプリプロセス処理で行われるテキストの置換処理。
+
+◆isdigit関数
+文字が 10 進数の数字かどうかをチェックします。10 進数字 ('0'～'9') なら真を返します。
+
+◆endlは遅いので\nを使うようにする
+
+◆ iostreamの速度アップ
+cin.tie(0);⇒cinとcoutの同期を切る
+ios::sync_with_stdio(false);⇒iostreamとstdioの同期を切る
+
+◆範囲for文
+・for (int i = 0; i < a.size(); i++) cout << a.at(i) << endl;
+　⇒for (int x : a) cout << x << endl;
+・string型でも使える⇒for (char c : string型変数) 
+
+◆多重ループの抜け方
+ループを抜けるかどうかを持つ変数(フラグ変数)を用意して、フラグ変数の値に応じてループを抜けるように書く。
+```
+  if (/* 2重ループを抜ける条件 */) {
+    finished = true;
+    break;  // finishをtrueにしてからbreakすることで、内側のループを抜けたすぐ後に外側のループも抜けることが出来る
+  }
+if (finished) break;
+```
+
+◆多次元配列定義
+```
+vector<vector<要素の型>> 変数名(要素数1, vector<要素の型>(要素数2, 初期値));
+vector<vector<要素の型>> 変数名(要素数1, vector<要素の型>(要素数2));  // 初期値を省略
+例)vector<vector<int>> data(3, vector<int>(4, 0));
+```
+行数：変数名.size()/列数：変数名.at(0).size()、要素数はこれらの積で求める
+
+◆C++のbooleanはtrue/false(小文字)、PythonはTrue/False(大文字)
+
+◆referenceの宣言：参照先の型 &参照の名前 = 参照先;
+ https://atcoder.jp/contests/apg4b/tasks/APG4b_u 
+
+◆string 型について他によく使用するメソッド (変数名が s, t )
+・文字列の長さ: s.size()
+・文字列の i 文字目: s[i]　(char 型です、値の取得も書き換えもできます)
+・文字列の連結: s + t　(例: s = "AtCoder", t = "Jobs" -> s + t = "AtCoderJobs")
+・文字列の大小関係: <　(辞書式順序で比較します)
+
+◆同列のif文はちゃんとelse ifで書く。でなければ、最後のifだけにelseが係ってしまい、分岐が上手くいかない。
+
+◆scanfの使い方 http://rainbow.pc.uec.ac.jp/edu/program/b1/Ex2-1b.htm 
+
+◆プログラムを途中で終わらせる
+C++：return 0;  ／Python：exit()
+
+◆論理演算子
+∧⇒C++：&&／Python：and、∨⇒C++：||／Python：or
+
+◆重複しない要素を数えるにはsetを使う
+C++⇒set<要素の型>変数名⇒変数名.insert(追加する要素)⇒変数名.size()
+Python⇒変数名=set([])⇒変数名.add(追加する要素)⇒len(変数名)
+
+◆keyと要素の組み合わせ⇒C++：map、Python：dictionary
+・C++mapの宣言⇒map<keyの型,要素の型> 変数名
+・ループ処理⇒for(auto itr = 変数名.begin(); itr != 変数名.end(); itr++)
+　itr->firstでkeyを、itr->secondで要素を、それぞれ取得出来る
+
+◆C++配列のソート
+int a[N];
+sort(a, a+N);  //aは配列のアドレスを指す
+ sort(V.begin(), V.end(), greater<long long>()); 降順ひな形
+
+◆C++でN / M の商を切り上げたいとき
+(N - 1 ) / M + 1
+
+◆C++11以降の除算では、小数点以下は0方向に丸められる。よって、負の場合は切り上げになる。
+
+◆平方根
+C++：sqrt(変数)、pow(変数,1/2)／Python：変数**0.5、pow(変数, 1/2)
+
+
+◆C++の桁数の目安⇒10^9であればlong longにしておく
+int型：10^9、long long型： 10^19
+
+◆偶数桁と奇数桁で処理を変えることを各loopにおけるif(i%2)で表現する
+
+◆4つの数字の組み合わせの最大値(但し合計が上限Mを超えてはいけない)
+4つの組み合わせを得るためにfor loopがを4重でかけると間に合わない。
+まずは2つの組み合わせだけのベクトル(上限M)を作成し、ソートする。
+それに対して更に2つの for loopをかけて最大値を探索するが、
+・1つ目は小さい要素から始め、全ての要素に対して
+・2つ目は大きい方から始め、初めて和がM以下となるまで
+loopを回し、更に2つ目のスタートはその一つ前のループで初めて和がM以下となった要素から始める(1つ目の要素は単調増加のため)。
+
+◆bit全探索
+ https://qiita.com/drken/items/7c6ff2aa4d8fce1c9361 
+C++
+ for (int bit = 0; bit < (1<<n); bit++) { //2進数で0～2^n-1までに対するloop(2進数のn桁目が1になる直前までloop)
+  for(int i = 0; i<n; i++) { //現在のbitの1~n桁目それぞれに対し
+    if(bit & (1<<i)) //(i+1)桁目が1であれば以下の処理を行う
+Python
+for i in range(2**D):
+  for j in range(D):
+    if i & 1<<j:
+
+◆bit表現
+cout << bitset<n>(A)　⇒変数Aをn桁の2進数で表示する
+(Python:bin(A))
+
+◆bitのi桁目とj桁目が共に1であることのif文
+ if(bit>>i & bit>>j & 1)
+
+◆bit中の1の数を数える
+__builtin_popcount(bit)  
+
+◆if文
+C++：if->else if-> else／Python：if->elif->else
+
+◆全体の中の2つの要素に対する前提⇒行列で格納する
+
+◆Pythonのm×nの2次元配列作成(初期値0)
+array = [[0]*n for _ in range(m)]
+もし[[0]*n]*mとしてしまうと、m行のlistが全て同一のものとなり、1つの行の要素を変えると他の行も変わってしまう
+
+◆Pythonで再帰関数を使う⇒最大再帰回数をデフォルトから増やす必要あり
+import sys
+sys.setrecursionlimit(1000000)
+
+
+◆とりあえずグローバル変数にしておくと楽
+
+◆Pythonで関数から外の変数を更新する
+関数内で「global 変数名」を宣言することを忘れない
+
+◆Pythonでは普通に変数をコピーする際には参照が渡されるので、本当にコピーしたい場合にはimport copyでcopy.copy(変数)を使う
+
+◆Numpyで行列の一部を取り出す⇒コンマでスライスを区切る
+#3x3の行列を生成
+arr = np.arange(5, 50, 5).reshape((3,3))
+arr
+>>>array([[ 5, 10, 15],
+          [20, 25, 30],
+          [35, 40, 45]])
+#この行列の右上部分の2x2行列だけ取り出す
+arr[:2, 1:]
+>>>array([[10, 15],
+          [25, 30]])
+
+◆Numpy maximum関数⇒行列の各要素の大小を比較して大きいものを取り出す
+
+◆大文字を小文字へ変える
+char - 'A' + 'a'
