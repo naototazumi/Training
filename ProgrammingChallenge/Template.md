@@ -1,3 +1,5 @@
+## 基本形
+```
 #include <bits/stdc++.h>
 #define REP(i, n) for (int i = 0; (i) < (int)(n); ++ (i))
 #define REP3(i, m, n) for (int i = (m); (i) < (int)(n); ++ (i))
@@ -30,31 +32,55 @@ int main() {
   // output
   cout << ans << '\n';
 }
+```
 
+### ソート
+```
+##ベクトル昇順
+sort(V.begin(), V.end())
+// ベクトル降順
+sort(V.begin(), V.end(), greater<int>())
+```
 
+### ループ
+```
+//bit全探索
+for (int bit = 0; bit < (1<<n); bit++) { 
+  for(int i = 0; i<n; i++) { 
+    if(bit & (1<<i)) 
 
+//ベクトルの全要素
+for (auto i: V) {
+```
 
+### ビットの1をカウント
+```
+__builtin_popcount(bit)
+__builtin_popcountll(bit)
+```
 
+### データ型最大値
+https://qiita.com/hryshtk/items/b848ed3bd78f940ac5af
+```
+short	32767
+unsigned short	65535
+int	2147483647
+unsigned int	4294967295
+long	9223372036854775807
+unsigned long	18446744073709551615
+long long	9223372036854775807
+unsigned long long	18446744073709551615
+```
 
-//main
-#include<bits/stdc++.h>
-using namespace std;
-int main() {
-  long long ans=0;
-  int N; cin >> N;
-  for (int i=0; i<N; i++) {
-    
-  }
-  cout << ans << "\n";
-}
-
-//読み込み
-cin >> N; //スペースで区切られた要素を読み込み、改行は無視
+## 読み込み
+```
+//スペースで区切られた要素を読み込み、改行は無視
+cin >> N; 
 
 char c; int n;
 c = gerchar(); //文字を1つずつ読み込み、改行も1文字
 n = c - '0'; //数値に変換するには、文字コード番号の引き算をする
-
+```
 
 
 //DFS
@@ -78,6 +104,8 @@ void dfs (int prev, int now, int cnt) {
 //double変数を15ケタ表示
 cout<<fixed<<setprecision(15)<<ans<<"\n";
 
+### その他マクロ
+```
 #include<bits/stdc++.h>
 using namespace std;
 typedef long long ll;
@@ -91,14 +119,8 @@ typedef long long ll;
 #define putchar putchar_unlocked
 #define pb push_back
 #define mp make_pair
+```
 
-
-
-#include<bits/stdc++.h>
-using namespace std;
-int main() {
-    cin.tie(0);
-    ios::sync_with_stdio(false);
 
 //整数の各桁の数字を合計する
 int SumOfDigits(int n) {
@@ -118,37 +140,11 @@ int getint() {
     return s * t;
 }  
 
-//bit全探索
-for (int bit = 0; bit < (1<<n); bit++) { 
-  for(int i = 0; i<n; i++) { 
-    if(bit & (1<<i)) 
 
-//for loop
-for (int i=0; i<N; i++)
-
-//sort
-sort(V.begin(), V.end(), greater<int>())
-
-
-import sys
-sys.setrecursionlimit(1000000)
-
-//iterate for each factor of vector
-for (auto i: V) {
 
 //delete a factor in vector
 V.erase(V.begin()+i);  
 
-__builtin_popcount(bit)
-__builtin_popcountll(bit)
 
-//データ型と最大値
-https://qiita.com/hryshtk/items/b848ed3bd78f940ac5af
-short	32767
-unsigned short	65535
-int	2147483647
-unsigned int	4294967295
-long	9223372036854775807
-unsigned long	18446744073709551615
-long long	9223372036854775807
-unsigned long long	18446744073709551615
+
+
