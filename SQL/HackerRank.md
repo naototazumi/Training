@@ -23,3 +23,11 @@ select *
 from CITY
 where ID = 1661
 ```
+
+## Weather Observation Station 1
+![image](https://user-images.githubusercontent.com/46245101/111091997-103dfe00-8578-11eb-8e78-21c5160ba23b.png)
+```
+select CITY, STATE
+from STATION
+```
+
