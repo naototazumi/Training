@@ -42,4 +42,10 @@ from STATION
 where mod(ID,2)=0
 ```
 
+## Weather Observation Station 4
+![image](https://user-images.githubusercontent.com/46245101/111235942-0fb76d00-8635-11eb-9b88-3606da0edf34.png)
+```
+select count(CITY) - count(distinct CITY)
+from STATION
+```
 
