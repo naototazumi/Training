@@ -2,6 +2,9 @@ MySQLの前提<br>
 ポイント<br>
 偶奇判定：mod関数<br>
 重複排除：select distinct
+行数カウント：select count(XX)
+重複排除して行数カウント：select count(distinct XX)
+selectの中で四則演算して出力できる
 
 
 ## Revising the Select Query I
