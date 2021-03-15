@@ -1,4 +1,8 @@
-MySQLの前提
+MySQLの前提<br>
+ポイント<br>
+偶奇判定：mod関数<br>
+重複排除：select distinct
+
 
 ## Revising the Select Query I
 ![image](https://user-images.githubusercontent.com/46245101/110939432-c0ddaf00-8378-11eb-8954-8cc3de9ef985.png)
@@ -30,4 +34,12 @@ where ID = 1661
 select CITY, STATE
 from STATION
 ```
+## Weather Observation Station 3
+![image](https://user-images.githubusercontent.com/46245101/111092232-d28da500-8578-11eb-86f8-1094b7a0dc87.png)
+```
+select distinct CITY
+from STATION
+where mod(ID,2)=0
+```
+
 
