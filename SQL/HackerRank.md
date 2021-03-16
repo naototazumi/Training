@@ -1,10 +1,13 @@
 MySQLの前提<br>
 ポイント<br>
 偶奇判定：mod関数<br>
-重複排除：select distinct
-行数カウント：select count(XX)
-重複排除して行数カウント：select count(distinct XX)
-selectの中で四則演算して出力できる
+重複排除：select distinct<br>
+行数カウント：select count(XX)<br>
+重複排除して行数カウント：select count(distinct XX)<br>
+selectの中で四則演算して出力できる<br>
+selectの中で複数列を入れるときはカンマで区切る<br>
+並べ替え：fronの後にorder by XX、昇順はasc、降順はdesc<br>
+1つのSQLが終わったらセミコロンで区切る<br>
 
 
 ## Revising the Select Query I
@@ -52,3 +55,17 @@ select count(CITY) - count(distinct CITY)
 from STATION
 ```
 
+## Weather Observation Station 5
+![image](https://user-images.githubusercontent.com/46245101/111237202-f663f000-8637-11eb-9513-a1ccf1bf7d8a.png)
+
+```
+select CITY, LENGTH(CITY) as length
+from STATION
+order by length asc, CITY asc
+limit 1;
+
+select CITY, LENGTH(CITY) as length
+from STATION
+order by length desc, CITY asc
+limit 1;
+```
