@@ -31,6 +31,7 @@ int main() {
   auto ans = solve(n, a);
   // output
   cout << ans << '\n';
+  //cout << setprecision(10) << ans << '\n';
 }
 ```
 
