@@ -51,10 +51,8 @@ for (int bit = 0; bit < (1<<n); bit++) { 
 
 //ベクトルの全要素
 for (auto i: V) {
-```
 
 //順列全探索
-```
 do {
   //...
 } while(next_permutation(b.begin(),b.end()));
