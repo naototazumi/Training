@@ -1,5 +1,8 @@
 https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_4_B&lang=ja
 
+ポイント：setの二分探索：set.lower_bound()
+setはイテレータを返してくる：`*`をつけることで参照先の値を取得できる
+
 
 ```
 #include <bits/stdc++.h>
