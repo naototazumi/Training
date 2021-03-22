@@ -10,7 +10,7 @@ using namespace std;
 using ll = long long;
 
 ll solve(int n, const vector<ll>& a) {
-  int tmp=0;
+  ll tmp=0;
   // ...
   return tmp;
 }
