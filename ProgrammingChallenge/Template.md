@@ -101,11 +101,11 @@ https://qiita.com/hamko/items/794a92c456164dcc04ad
   ll ng = s - 1, ok = t; //半開区間[s,t)の前提
   while (ok - ng > 1) {
     ll mid = (ng + ok) / 2;
-    if(midの判定) ok = mid;
+    if(solve(mid)) ok = mid;
     else ng = mid;
   }
   if (ok == t) 
-    cout << "for all x, f(x) = false" << endl;
+    cout << "for all x, solve(x) = false" << endl;
   else 
     cout << ok << endl;
 ```
