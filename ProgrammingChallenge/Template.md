@@ -98,16 +98,15 @@ a.end() - upper_bound(a.begin(),a.end(),key)
 ## 二分探索(自力)
 https://qiita.com/hamko/items/794a92c456164dcc04ad
 ```
-ll ng = s - 1, ok = t; //半開区間[s,t)の前提
-while (ok - ng > 1) {
+  ll ng = s - 1, ok = t; //半開区間[s,t)の前提
+  while (ok - ng > 1) {
     ll mid = (ng + ok) / 2;
     if(midの判定) ok = mid;
     else ng = mid;
-}
-
-if (ok == t) 
+  }
+  if (ok == t) 
     cout << "for all x, f(x) = false" << endl;
-else 
+  else 
     cout << ok << endl;
 ```
 
