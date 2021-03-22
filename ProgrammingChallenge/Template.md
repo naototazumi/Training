@@ -78,7 +78,7 @@ long long	9223372036854775807
 unsigned long long	18446744073709551615
 ```
 
-## 二分探索
+## 二分探索(標準ライブラリ)
 ```
 //初めてkey以上となるaの要素へのインデックスを返す(そのような要素がなければ最終インデックス+1を返す)
 lower_bound(a.begin(),a.end(),key) - a.begin()
@@ -94,6 +94,23 @@ upper_bound(a.begin(),a.end(),key) - a.begin()
 //あるkeyより大きい要素の個数
 a.end() - upper_bound(a.begin(),a.end(),key)
 ```
+
+## 二分探索(自力)
+https://qiita.com/hamko/items/794a92c456164dcc04ad
+```
+ll ng = s - 1, ok = t; //半開区間[s,t)の前提
+while (ok - ng > 1) {
+    ll mid = (ng + ok) / 2;
+    if(midの判定) ok = mid;
+    else ng = mid;
+}
+
+if (ok == t) 
+    cout << "for all x, f(x) = false" << endl;
+else 
+    cout << ok << endl;
+```
+
 
 ## 読み込み
 ```
