@@ -78,6 +78,23 @@ long long	9223372036854775807
 unsigned long long	18446744073709551615
 ```
 
+## 二分探索
+```
+//初めてkey以上となるaの要素へのインデックスを返す(そのような要素がなければ最終インデックス+1を返す)
+lower_bound(a.begin(),a.end(),key) - a.begin()
+//初めてkeyより大きくなるaの要素へのインデックスを返す(そのような要素がなければ最終インデックス+1を返す)
+upper_bound(a.begin(),a.end(),key) - a.begin()
+
+//あるkeyより小さい要素の個数
+lower_bound(a.begin(),a.end(),key) - a.begin()
+//あるkey以上の要素の個数
+a.end() - lower_bound(a.begin(),a.end(),key)
+//あるkey以下の要素の個数
+upper_bound(a.begin(),a.end(),key) - a.begin()
+//あるkeyより大きい要素の個数
+a.end() - upper_bound(a.begin(),a.end(),key)
+```
+
 ## 読み込み
 ```
 //スペースで区切られた要素を読み込み、改行は無視
