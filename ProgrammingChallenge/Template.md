@@ -111,6 +111,29 @@ https://qiita.com/hamko/items/794a92c456164dcc04ad
     cout << ok << endl;
 ```
 
+## 三分探索：狭義凸関数(下に凸)の最小値を計算、3分の1ずつ区間を縮めていく
+https://qiita.com/DaikiSuyama/items/84df26daad11cf7da453
+```
+double solve(double n, double x) {
+  return x+n*pow(2,-(x/1.5));
+}
+
+int main() {
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+  constexpr char endl = '\n';
+
+  double n; cin >> n;
+  double l=0.0, r=1e18, c1, c2;
+  while(l+pow(10,-8)<r) {
+    c1=l+(r-l)/3;
+    c2=r-(r-l)/3;
+    if (solve(n, c1) < solve(n, c2)) r=c2;
+    else l=c1;
+  }
+  cout << setprecision(10) << solve(n, l) << '\n';
+}
+```
 
 ## 読み込み
 ```
@@ -123,7 +146,8 @@ n = c - '0'; //数値に変換するには、文字コード番号の引き算�
 ```
 
 
-//DFS
+## DFS
+```
 vector<vector<int>> V;
 vector<int> Map;
 int ans=0, inf=1<<30;
@@ -139,10 +163,9 @@ void dfs (int prev, int now, int cnt) {
 }
  
   V = vector<vector<int>>(N, vector<int>(0));
-  Map = vector<int>(N, inf);
+  Map = vector<int>(N, inf);
+```
 
-//double変数を15ケタ表示
-cout<<fixed<<setprecision(15)<<ans<<"\n";
 
 ### その他マクロ
 ```
@@ -180,11 +203,5 @@ int getint() {
     return s * t;
 }  
 
-
-
 //delete a factor in vector
 V.erase(V.begin()+i);  
-
-
-
-
