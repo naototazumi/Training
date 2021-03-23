@@ -29,3 +29,37 @@ int main() {
   }
 }
 ```
+
+三分探索
+```
+#include <bits/stdc++.h>
+#define REP(i, n) for (int i = 0; (i) < (int)(n); ++ (i))
+#define REP3(i, m, n) for (int i = (m); (i) < (int)(n); ++ (i))
+#define REP_R(i, n) for (int i = (int)(n) - 1; (i) >= 0; -- (i))
+#define REP3R(i, m, n) for (int i = (int)(n) - 1; (i) >= (int)(m); -- (i))
+#define ALL(x) std::begin(x), std::end(x)
+#define E 2.71828182845904523536
+using namespace std;
+using ll = long long;
+
+double solve(double n, double x) {
+  return x+n*pow(2,-(x/1.5));
+}
+
+int main() {
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+  constexpr char endl = '\n';
+
+  // input
+  double n; cin >> n;
+  double l=0.0, r=1e18, c1, c2;
+  while(l+pow(10,-8)<r) {
+    c1=l+(r-l)/3;
+    c2=r-(r-l)/3;
+    if (solve(n, c1) < solve(n, c2)) r=c2;
+    else l=c1;
+  }
+  cout << setprecision(10) << solve(n, l) << '\n';
+}
+```
