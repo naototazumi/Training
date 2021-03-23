@@ -6,6 +6,7 @@
 #define REP_R(i, n) for (int i = (int)(n) - 1; (i) >= 0; -- (i))
 #define REP3R(i, m, n) for (int i = (int)(n) - 1; (i) >= (int)(m); -- (i))
 #define ALL(x) std::begin(x), std::end(x)
+#define E 2.71828182845904523536;
 using namespace std;
 using ll = long long;
 
