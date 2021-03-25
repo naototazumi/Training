@@ -148,22 +148,48 @@ n = c - '0'; //数値に変換するには、文字コード番号の引き算�
 
 ## DFS
 ```
-vector<vector<int>> V;
-vector<int> Map;
-int ans=0, inf=1<<30;
- 
-void dfs (int prev, int now, int cnt) {
-  for (auto i: V[now]) {
-    if(Map[i]!=inf) continue;
-    else {
-      Map[i]=cnt;
-      dfs(now, i, cnt);
-    }
-  }
+#include <bits/stdc++.h>
+#define REP(i, n) for (int i = 0; (i) < (int)(n); ++ (i))
+#define REP3(i, m, n) for (int i = (m); (i) < (int)(n); ++ (i))
+#define REP_R(i, n) for (int i = (int)(n) - 1; (i) >= 0; -- (i))
+#define REP3R(i, m, n) for (int i = (int)(n) - 1; (i) >= (int)(m); -- (i))
+#define ALL(x) std::begin(x), std::end(x)
+#define E 2.71828182845904523536
+using namespace std;
+using ll = long long;
+vector<vector<ll>> V;
+vector<ll> Map;
+ll ans=0, inf=1<<30, cnt=0;
+
+void dfs (ll prev, ll now, ll cnt) {
+  Map[now] = cnt;
+  cnt++;
+  for (auto i: V[now]) {
+    if(Map[i]!=inf) continue;
+    else {
+      dfs(now, i, cnt);
+    }
+  }
 }
- 
-  V = vector<vector<int>>(N, vector<int>(0));
-  Map = vector<int>(N, inf);
+
+int main() {
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+  constexpr char endl = '\n';
+
+  ll n; cin >> n;
+  V = vector<vector<ll>>(n, vector<ll>(0));
+  Map = vector<ll>(n, inf);
+  ll x;
+  REP(i, n) {
+    cin >> x;
+    V[i].push_back(x);
+  }
+
+  REP(i,n) if(Map[i]==inf) dfs(-1,i,cnt+1);
+  // output
+  cout << ans << '\n';
+}
 ```
 
 
