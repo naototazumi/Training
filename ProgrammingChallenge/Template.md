@@ -58,6 +58,13 @@ for (auto i: V) {
 do {
   //...
 } while(next_permutation(b.begin(),b.end()));
+
+// setの全要素
+  auto itr = s.begin();
+  while (itr != s.end()) {
+    // ...
+    itr++;
+  }  
 ```
 
 ### ビットの1をカウント
