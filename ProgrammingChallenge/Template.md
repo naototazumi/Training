@@ -266,7 +266,45 @@ int main() {
   cout << ans << '\n';
 }
 ```
+### DP
+```
+#include <bits/stdc++.h>
+#define REP(i, n) for (int i = 0; (i) < (int)(n); ++ (i))
+#define REP3(i, m, n) for (int i = (m); (i) < (int)(n); ++ (i))
+#define REP_R(i, n) for (int i = (int)(n) - 1; (i) >= 0; -- (i))
+#define REP3R(i, m, n) for (int i = (int)(n) - 1; (i) >= (int)(m); -- (i))
+#define ALL(x) std::begin(x), std::end(x)
+#define E 2.71828182845904523536
+using namespace std;
+using ll = long long;
+ll n, w;
+vector<ll> Value, Weight;
+vector<vector<ll>> DP;
 
+int main() {
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+  constexpr char endl = '\n';
+
+  cin >> n >> w;
+  Value = vector<ll>(n);
+  Weight = vector<ll>(n);
+  DP = vector<vector<ll>>(w+1, vector<ll>(n+1,0));
+  REP(i,n) cin >> Value[i] >> Weight[i];
+  
+  REP3(i,1,w+1) {
+    REP(j,n) {
+      if(j==0) {
+        if(Weight[j]<=i) DP[i][j] = Value[j];
+      }        
+      else if(Weight[j]<=i) DP[i][j] = max(DP[i][j-1], DP[i-Weight[j]][j-1]+Value[j]);
+      else DP[i][j] = DP[i][j-1];
+    }
+  }
+  cout << DP[w][n-1] << '\n';
+
+}
+```
 
 ### その他マクロ
 ```
