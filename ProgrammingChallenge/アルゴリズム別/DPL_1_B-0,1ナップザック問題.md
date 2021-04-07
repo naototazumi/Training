@@ -21,21 +21,20 @@ int main() {
   constexpr char endl = '\n';
 
   cin >> n >> w;
-  Value = vector<ll>(n);
-  Weight = vector<ll>(n);
+  Value = vector<ll>(n+1,0);
+  Weight = vector<ll>(n+1,0);
   DP = vector<vector<ll>>(w+1, vector<ll>(n+1,0));
-  REP(i,n) cin >> Value[i] >> Weight[i];
+  REP3(i,1,n+1) cin >> Value[i] >> Weight[i];
   
   REP3(i,1,w+1) {
-    REP(j,n) {
-      if(j==0) {
-        if(Weight[j]<=i) DP[i][j] = Value[j];
-      }        
-      else if(Weight[j]<=i) DP[i][j] = max(DP[i][j-1], DP[i-Weight[j]][j-1]+Value[j]);
+    REP3(j,1,n+1) {
+      if(i>=Weight[j]) {
+        DP[i][j] = max(DP[i][j-1], DP[i-Weight[j]][j-1]+Value[j]);
+      }
       else DP[i][j] = DP[i][j-1];
     }
   }
-  cout << DP[w][n-1] << '\n';
+  cout << DP[w][n] << '\n';
 
 }
 ```
