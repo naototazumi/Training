@@ -51,6 +51,40 @@ def make_divisors(n):
 
 
 # 素因数分解
+試し割法：計算量が O(√N) 
+```
+C++
+using ll = long long;
+vector<ll> prime_factorize(ll n) {
+    vector<ll> res;
+    for (ll a = 2; a * a <= n; a++) {
+        if (n % a != 0) continue;
+        while (n % a == 0) {
+            res.push_back(a);
+            n /= a;
+        }
+    }
+    if (n != 1) res.push_back(n);
+    sort(res.begin(), res.end());
+    return res
+
+Python
+def prime_factorize(n):
+    a = []
+    while n % 2 == 0:
+        a.append(2)
+        n //= 2
+    f = 3
+    while f * f <= n:
+        if n % f == 0:
+            a.append(f)
+            n //= f
+        else:
+            f += 2
+    if n != 1:
+        a.append(n)
+    return a
+```
 
 # エラトステネスの篩
 
