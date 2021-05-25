@@ -56,17 +56,24 @@ def make_divisors(n):
 C++
 using ll = long long;
 vector<ll> prime_factorize(ll n) {
-    vector<ll> res;
-    for (ll a = 2; a * a <= n; a++) {
-        if (n % a != 0) continue;
-        while (n % a == 0) {
-            res.push_back(a);
-            n /= a;
-        }
+  vector<ll> res;
+  if  (n % 2 == 0) {
+    while (n % 2 == 0) {
+      res.push_back(2);
+      n /= 2;
+    }      
+  }
+  for (ll a = 3; a * a <= n; a+=2) {
+    if (n % a != 0) continue;
+    while (n % a == 0) {
+      res.push_back(a);
+      n /= a;
     }
-    if (n != 1) res.push_back(n);
-    sort(res.begin(), res.end());
-    return res
+  }
+  if (n != 1) res.push_back(n);
+  sort(res.begin(), res.end());
+  return res;
+}
 
 Python
 def prime_factorize(n):
@@ -87,6 +94,42 @@ def prime_factorize(n):
 ```
 
 # エラトステネスの篩
+
+```
+C++
+using ll = long long;
+vector<ll> sieve(ll n) {
+  vector<bool> is_prime(n, true);
+  is_prime[0] = false;
+  REP3(i,2,n+1){
+    if(is_prime[i-1]) {
+      ll j = 2 * i;
+      while(j <= n) {
+        is_prime[j-1] = false;
+        j += i;
+      }
+    }
+  }
+  vector<ll> table;
+  REP3(i, 1, n+1) if(is_prime[i-1]) table.push_back(i); 
+  return table;
+}
+
+
+Python
+def sieve(n):
+    is_prime = [True for _ in range(n+1)]
+    is_prime[0] = False
+
+    for i in range(2, n+1):
+        if is_prime[i-1]:
+            j = 2 * i
+            while j <= n:
+                is_prime[j-1] = False
+                j += i
+    table = [ i for i in range(1, n+1) if is_prime[i-1]]
+    return is_prime, table
+```
 
 # BIT全探索
 
