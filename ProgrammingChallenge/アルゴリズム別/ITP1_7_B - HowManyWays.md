@@ -14,29 +14,29 @@ https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_7_B&lang=ja
 using namespace std;
 using ll = long long;
 
-ll solve(int n, int x) {
-  ll tmp=0;
-  REP3(i,1,n-1){
-    REP3(j,i+1,n){
-      REP3(k,j+1,n+1){
-        if(i+j+k==x) tmp++;
-      }
-    }
-  }
-  return tmp;
-}
-
 int main() {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
   constexpr char endl = '\n';
- 
-  int n, x;
+
+  ll n, x, ans;
   while(true){
-    cin >> n >> x;
+    ans=0; cin >> n >> x;
     if(n==0 && x==0) break;
-    auto ans = solve(n, x);
-    cout << ans << '\n';
+    REP3(i, 1, n-1) {
+      REP3(j, i+1, n){
+        if(x-i-j>j && x-i-j<=n) ans++;
+      }
+    }
+    cout << ans << "\n";
   }
 }
+```
+
+
+
+計算範囲を以下の通り誤った、0以上n未満ではなく、1以上n以下。
+```
+REP(i, n-2) {
+  REP3(j, i+1, n-1){
 ```
