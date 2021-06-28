@@ -21,16 +21,13 @@ int main() {
   cin.tie(nullptr);
   constexpr char endl = '\n';
 
-  // input
-  int n, x; cin >> n >> x;
+  ll n, x; cin >> n >> x;
   vector<ll> a(n);
   REP(i, n) {
     cin >> a[i];
   }
 
-  // solve
   auto ans = solve(n, a);
-  // output
   cout << ans << '\n';
   //cout << setprecision(10) << ans << '\n';
 }
