@@ -59,7 +59,7 @@ do {
 // setの全要素
   auto itr = s.begin();
   while (itr != s.end()) {
-    // ...
+    // *itrでsetの要素を呼び出す
     itr++;
   }  
 ```
