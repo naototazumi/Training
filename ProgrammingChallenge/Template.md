@@ -1,3 +1,5 @@
+https://atcoder.jp/contests/practice
+
 ## 基本形
 ```
 #include <bits/stdc++.h>
@@ -9,6 +11,9 @@
 #define E 2.71828182845904523536
 using namespace std;
 using ll = long long;
+vector<vector<ll>> V;
+vector<ll> Map;
+ll inf=1<<30;
 
 ll solve(int n, const vector<ll>& a) {
   ll tmp=0;
