@@ -315,9 +315,61 @@ int main() {
 https://qiita.com/ageprocpp/items/cdf67e828e1b09316f6e#%E3%83%80%E3%82%A4%E3%82%AF%E3%82%B9%E3%83%88%E3%83%A9%E6%B3%95
 https://algo-logic.info/dijkstra/
 ```
+#include <bits/stdc++.h>
+#define REP(i, n) for (int i = 0; (i) < (int)(n); ++ (i))
+#define REP3(i, m, n) for (int i = (m); (i) < (int)(n); ++ (i))
+#define REP_R(i, n) for (int i = (int)(n) - 1; (i) >= 0; -- (i))
+#define REP3R(i, m, n) for (int i = (int)(n) - 1; (i) >= (int)(m); -- (i))
+#define ALL(x) std::begin(x), std::end(x)
+#define E 2.71828182845904523536
+using namespace std;
+using ll = long long;
+using P = pair<ll, ll>;
+vector<vector<P>> edge;
+vector<ll> dis, pre;
+ll inf=1<<30;
 
+int main() {
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+  constexpr char endl = '\n';
 
-
+  ll v, e, r; cin >> v >> e >> r;
+  edge = vector<vector<P>>(v);
+  dis = vector<ll>(v, inf);
+  pre = vector<ll>(v, -1);
+  dis[r] = 0;
+  ll s, t, d;
+  REP(i, e) {
+    cin >> s >> t >> d;
+    edge[s].push_back(make_pair(d, t));
+  }
+  priority_queue<P, vector<P>, greater<P>> pq;
+  //priority_queueの処理順カスタマイズ「要素の型、内部コンテナの型(デフォルトはvector)、昇順ならgreater<型(デフォルト降順)
+  //pairで経路情報を保存、secondは行先の頂点、firstはその頂点へ行くための重み
+  pq.push(make_pair(0,r));
+  while(!pq.empty()) {
+    P top = pq.top(); pq.pop();
+    if(dis[top.second] < top.first) continue;
+    //登録されている重みが、その頂点へ行くための重みより小さければ、この経路は無視
+    else {
+      for(auto i : edge[top.second]){
+        if(dis[i.second] < top.first + i.first) continue;
+        //行先に登録されている重みが、その頂点へ行くための重みより小さければ、この経路は無視
+        else {
+          dis[i.second] = top.first + i.first;
+          pre[i.second] = top.second; 
+          pq.push(make_pair(dis[i.second], i.second));
+        }
+      }
+    }
+  }
+  REP(i, v){
+    if(dis[i]==inf) cout << "INF";
+    else cout << dis[i];
+    cout << "\n";
+  }
+}
 ```
 
 
