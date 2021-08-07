@@ -310,6 +310,19 @@ int main() {
 }
 ```
 
+### ダイクストラ法
+ダイクストラ法は、行ける場所の中から「最も早く行ける場所」を順番に確定させていきます。
+https://qiita.com/ageprocpp/items/cdf67e828e1b09316f6e#%E3%83%80%E3%82%A4%E3%82%AF%E3%82%B9%E3%83%88%E3%83%A9%E6%B3%95
+https://algo-logic.info/dijkstra/
+```
+
+
+
+```
+
+
+
+
 ### その他マクロ
 ```
 #include<bits/stdc++.h>
