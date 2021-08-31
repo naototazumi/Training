@@ -16,7 +16,7 @@ using namespace std;
 using ll = long long;
 vector<vector<ll>> V;
 vector<ll> Map;
-ll inf=1<<30;
+ll inf=1e18;
 
 ll solve(int n, const vector<ll>& a) {
   ll tmp=0;
@@ -375,6 +375,45 @@ int main() {
 }
 ```
 
+### ワーシャルフロイド法
+全点対間最短経路で使う
+https://qiita.com/saito_ry/items/55cb7473174df0be7621
+
+```
+  ll v, e, s, t, d; cin >> v >> e;
+  vector<vector<ll>> dist(v, vector<ll>(v, inf));
+  REP(i, e) {
+    cin >> s >> t >> d;
+    dist[s][t] = d;
+  }
+  REP(i, v) dist[i][i] = 0;
+  
+  REP(k, v) {
+    REP(i, v) {
+      if(dist[i][k]==inf) continue;
+      REP(j, v) {
+        if(dist[k][j]==inf) continue;
+        dist[i][j] = min(dist[i][j], dist[i][k]+dist[k][j]);
+      }
+    }
+  }
+  bool flg = false;
+  REP(i, v) if(dist[i][i]<0) {
+    cout << "NEGATIVE CYCLE" << "\n";
+    flg = true;
+    break;
+  }
+  if(!flg) {
+    REP(i, v) {
+      REP(j, v) {
+        if(dist[i][j]!=inf) cout << dist[i][j];
+        else cout << "INF";
+        if(j<v-1) cout << " ";
+      }
+      cout << "\n";
+    }
+  }
+```
 
 
 
