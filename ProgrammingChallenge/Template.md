@@ -14,15 +14,9 @@ https://atcoder.jp/contests/practice
 #define MP make_pair
 using namespace std;
 using ll = long long;
-vector<vector<ll>> V;
+vector<vector<ll>> G;
 vector<ll> Map;
 ll inf=1e18;
-
-ll solve(int n, const vector<ll>& a) {
-  ll tmp=0;
-  // ...
-  return tmp;
-}
 
 int main() {
   ios::sync_with_stdio(false);
@@ -35,7 +29,6 @@ int main() {
     cin >> a[i];
   }
 
-  auto ans = solve(n, a);
   cout << ans << '\n';
   //cout << setprecision(10) << ans << '\n';
 }
