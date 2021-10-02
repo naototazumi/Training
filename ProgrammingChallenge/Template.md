@@ -407,7 +407,32 @@ https://qiita.com/saito_ry/items/55cb7473174df0be7621
     }
   }
 ```
+### 拡張ユークリッドの互除法、aとbの最大公約数gcd(a,b)を返し、ax+by=gcd(a,b)を満たすx,yも返す
+```
+ll ext_gcd(ll a, ll b,ll&x,ll&y) {
+  if(b==0) {
+    x=1; y=0;
+    return a;
+  }
+  ll g = ext_gcd(b, a%b, x, y);
+  ll z = x - (a/b)*y; 
+  x=y;
+  y=z;
+  return g;
+}
 
+int main() {
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+  constexpr char endl = '\n';
+
+  ll a, b, x, y, g; cin >> a >> b;
+  g = ext_gcd(a, b, x, y);
+  
+  cout << a << " " << b << " " << x << " " << y << "\n";
+  cout << g << "\n";
+}
+```
 
 
 ### その他マクロ
