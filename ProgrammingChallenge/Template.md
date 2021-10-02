@@ -434,6 +434,27 @@ int main() {
 }
 ```
 
+### 繰り返し二乗法
+```
+ll Pow(ll x, ll n) {
+    ll ret = 1;
+    while (n > 0) {
+        if (n & 1) ret = ret * x;  // n の最下位bitが 1 ならば x^(2^i) をかける
+        x = x * x;
+        n >>= 1;  // n を1bit 左にずらす
+    }
+    return ret;
+}
+
+int main() {
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+  constexpr char endl = '\n';
+
+  ll x, n; cin >> x >> n;
+  cout << Pow(x, n) << "\n";
+}
+```
 
 ### その他マクロ
 ```
