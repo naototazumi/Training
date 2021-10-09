@@ -455,6 +455,13 @@ int main() {
   cout << Pow(x, n) << "\n";
 }
 ```
+### 比較関数 pairのsecondの昇順、firstの降順
+```
+bool comp(pair<ll, ll> a, pair<ll, ll> b){
+  if(a.second!= b.second) return a.second < b.second;
+  else return a.first >= b.first;
+}
+```
 
 ### その他マクロ
 ```
