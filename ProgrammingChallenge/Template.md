@@ -466,11 +466,11 @@ bool comp(pair<ll, ll> a, pair<ll, ll> b){
 ### 階乗
 ```
 ll factorial(ll k){
-    ll sum = 1;
-    REP3(i, 2, k+1) {
-        sum *= i;
-    }
-    return sum;
+  ll sum = 1;
+  REP3(i, 2, k+1) {
+    sum *= i;
+  }
+  return sum;
 }
 ```
 
