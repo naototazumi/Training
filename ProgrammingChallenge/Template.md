@@ -496,6 +496,31 @@ vector<pair<ll, ll>> prime_factorize(ll N) {
 
 ```
 
+### 座標圧縮
+https://algo-logic.info/coordinate-compress/
+```
+vector<ll> compress(vector<ll> &C) {
+  vector<ll> vals; //圧縮前の座標候補を格納
+  ll N = C.size();
+  REP(i, N) {
+    // その位置と、一つ隣を確保(隣を確保しないと空白が埋まってしまうことがある)
+    REP(d, 1) {
+      ll tc = C[i] + d;
+      vals.push_back(tc);
+    }
+  }
+  // ソート
+  sort(vals.begin(), vals.end());
+  // 隣り合う重複を削除(unique), 末端のゴミを削除(erase)
+  vals.erase(unique(vals.begin(), vals.end()), vals.end());
+  // 圧縮前の座標候補の中で左から何番目なのかを二分探索で取得して座標を圧縮
+  REP(i, N) C[i] = lower_bound(vals.begin(), vals.end(), C[i]) - vals.begin(); 
+  return vals; //圧縮前の座標候補を返す。vals[圧縮後座標]で圧縮前座標を取り出せる。
+}
+```
+
+
+
 ### その他マクロ
 ```
 #include<bits/stdc++.h>
