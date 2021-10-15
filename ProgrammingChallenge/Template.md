@@ -116,10 +116,10 @@ https://qiita.com/hamko/items/794a92c456164dcc04ad
     cout << ok << endl;
 ```
 
-## 三分探索：狭義凸関数(下に凸)の最小値を計算、3分の1ずつ区間を縮めていく
+## 三分探索：狭義凸関数(下に凸)の最小値を計算、3分の1ずつ区間を縮めていく。long doubleでないと収束しないケースがある
 https://qiita.com/DaikiSuyama/items/84df26daad11cf7da453
 ```
-double solve(double n, double x) {
+long double solve(double n, double x) {
   return x+n*pow(2,-(x/1.5));
 }
 
@@ -128,8 +128,8 @@ int main() {
   cin.tie(nullptr);
   constexpr char endl = '\n';
 
-  double n; cin >> n;
-  double l=0.0, r=1e18, c1, c2;
+  long double n; cin >> n;
+  long double l=0.0, r=1e18, c1, c2;
   while(l+pow(10,-8)<r) {
     c1=l+(r-l)/3;
     c2=r-(r-l)/3;
