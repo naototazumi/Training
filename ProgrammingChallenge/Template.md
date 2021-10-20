@@ -3,10 +3,10 @@ https://atcoder.jp/contests/practice
 ## 基本形
 ```
 #include <bits/stdc++.h>
-#define REP(i, n) for (int i = 0; (i) < (int)(n); ++ (i))
-#define REP3(i, m, n) for (int i = (m); (i) < (int)(n); ++ (i))
-#define REP_R(i, n) for (int i = (int)(n) - 1; (i) >= 0; -- (i))
-#define REP3R(i, m, n) for (int i = (int)(n) - 1; (i) >= (int)(m); -- (i))
+#define REP(i, n) for (ll i = 0; (i) < (ll)(n); ++ (i))
+#define REP3(i, m, n) for (ll i = (m); (i) < (ll)(n); ++ (i))
+#define REP_R(i, n) for (ll i = (ll)(n) - 1; (i) >= 0; -- (i))
+#define REP3R(i, m, n) for (ll i = (ll)(n) - 1; (i) >= (ll)(m); -- (i))
 #define E 2.71828182845904523536
 #define F first 
 #define S second 
