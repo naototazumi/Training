@@ -17,6 +17,7 @@ using ll = long long;
 vector<vector<ll>> G;
 vector<ll> Map;
 ll inf=1e18;
+double Pi = 3.141592653589793;
 
 int main() {
   ios::sync_with_stdio(false);
