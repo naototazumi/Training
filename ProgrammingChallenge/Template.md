@@ -559,7 +559,18 @@ vector<ll> compress(vector<ll> &a, vector<ll> &b) {
 }
 ```
 
-
+### 組合せnCr パスカルの三角形
+```
+ll comb(ll n, ll r) {
+  vector<vector<ll>> v(n+1,vector<ll>(n+1, 0));
+  REP(i, n+1) {
+    v[i][0] = 1;
+    v[i][i] = 1;
+  }
+  REP3(i,1,n+1) REP3(j,1,i) v[i][j] = v[i-1][j-1]+v[i-1][j];
+  return v[n][r];
+}
+```
 
 ### その他マクロ
 ```
