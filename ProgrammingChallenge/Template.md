@@ -559,6 +559,9 @@ vector<ll> compress(vector<ll> &a, vector<ll> &b) {
 }
 ```
 
+### 組合せnCr 逆元
+https://atcoder.jp/contests/abc145/submissions/27326116
+
 ### 組合せnCr パスカルの三角形
 ```
 ll comb(ll n, ll r) {
