@@ -728,11 +728,11 @@ int main() {
   cin.tie(nullptr);
   constexpr char endl = '\n';
   
-  ll n, x, y, c, ans;
-  cin >> n;
+  ll n, m, x, y, c, ans;
+  cin >> n >> m;
   vector<Edge> edges;
   Edge e;
-  REP(i, n) {
+  REP(i, m) {
     cin >> x >> y >> c;
     e.u=x;
     e.v=y;
