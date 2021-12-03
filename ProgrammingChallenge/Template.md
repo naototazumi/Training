@@ -575,6 +575,177 @@ ll comb(ll n, ll r) {
 }
 ```
 
+### Union-Find
+```
+class UnionFind{
+public:
+  vector<ll> parent; //parent[i]はiの親
+  vector<ll> siz; //素集合のサイズを表す配列(1で初期化)
+  map<ll,vector<ll>> group; //集合ごとに管理する(key:集合の代表元、value:集合の要素の配列)
+  ll n; //要素数
+
+  //コンストラクタ
+  UnionFind(ll n_):n(n_),parent(n_),siz(n_,1){ 
+    //全ての要素の根が自身であるとして初期化
+    for(ll i=0;i<n;i++){parent[i]=i;}
+  }
+
+  //データxの属する木の根を取得(経路圧縮も行う)
+  ll root(ll x){
+    if(parent[x]==x) return x;
+    return parent[x]=root(parent[x]);//代入式の値は代入した変数の値なので、経路圧縮できる
+  }
+
+  //xとyの木を併合
+  void unite(ll x,ll y){
+    ll rx=root(x);//xの根
+    ll ry=root(y);//yの根
+    if(rx==ry) return;//同じ木にある時
+    //小さい集合を大きい集合へと併合(ry→rxへ併合)
+    if(siz[rx]<siz[ry]) swap(rx,ry);
+    siz[rx]+=siz[ry];
+    parent[ry]=rx;//xとyが同じ木にない時はyの根ryをxの根rxにつける
+  }
+
+  //xとyが属する木が同じかを判定
+  bool same(ll x,ll y){
+    ll rx=root(x);
+    ll ry=root(y);
+    return rx==ry;
+  }
+
+  //xの素集合のサイズを取得
+  ll size(ll x){
+    return siz[root(x)];
+  }
+
+  //素集合をそれぞれグループ化
+  void grouping(){
+    //経路圧縮を先に行う
+    REP(i,n)root(i);
+    //mapで管理する(デフォルト構築を利用)
+    REP(i,n)group[parent[i]].PB(i);
+  }
+
+  //素集合系を削除して初期化
+  void clear(){
+    REP(i,n){parent[i]=i;}
+    siz=vector<ll>(n,1);
+    group.clear();
+  }
+};
+```
+
+### 最小全域木：Kruskal法
+```
+//以下、素集合と木は同じものを表す
+class UnionFind{
+public:
+  vector<ll> parent; //parent[i]はiの親
+  vector<ll> siz; //素集合のサイズを表す配列(1で初期化)
+  map<ll,vector<ll>> group; //集合ごとに管理する(key:集合の代表元、value:集合の要素の配列)
+  ll n; //要素数
+
+  //コンストラクタ
+  UnionFind(ll n_):n(n_),parent(n_),siz(n_,1){ 
+    //全ての要素の根が自身であるとして初期化
+    for(ll i=0;i<n;i++){parent[i]=i;}
+  }
+
+  //データxの属する木の根を取得(経路圧縮も行う)
+  ll root(ll x){
+    if(parent[x]==x) return x;
+    return parent[x]=root(parent[x]);//代入式の値は代入した変数の値なので、経路圧縮できる
+  }
+
+  //xとyの木を併合
+  void unite(ll x,ll y){
+    ll rx=root(x);//xの根
+    ll ry=root(y);//yの根
+    if(rx==ry) return;//同じ木にある時
+    //小さい集合を大きい集合へと併合(ry→rxへ併合)
+    if(siz[rx]<siz[ry]) swap(rx,ry);
+    siz[rx]+=siz[ry];
+    parent[ry]=rx;//xとyが同じ木にない時はyの根ryをxの根rxにつける
+  }
+
+  //xとyが属する木が同じかを判定
+  bool same(ll x,ll y){
+    ll rx=root(x);
+    ll ry=root(y);
+    return rx==ry;
+  }
+
+  //xの素集合のサイズを取得
+  ll size(ll x){
+    return siz[root(x)];
+  }
+
+  //素集合をそれぞれグループ化
+  void grouping(){
+    //経路圧縮を先に行う
+    REP(i,n)root(i);
+    //mapで管理する(デフォルト構築を利用)
+    REP(i,n)group[parent[i]].PB(i);
+  }
+
+  //素集合系を削除して初期化
+  void clear(){
+    REP(i,n){parent[i]=i;}
+    siz=vector<ll>(n,1);
+    group.clear();
+  }
+};
+
+//辺の構造体
+struct Edge{
+  ll u,v,cost;
+  //後ろにconstつける！
+  bool operator<(const Edge& e) const {return this->cost<e.cost;}
+};
+
+//クラスカル法
+//ret:=最小全域木の重みの総和
+//n:=頂点の総数
+//計算量:=O(m log{n})
+ll Kruskal(vector<Edge> &edges,ll n){
+  sort(edges.begin(), edges.end());//辺の重みの昇順
+  UnionFind uf(n);
+  ll ret=0;
+  for(auto e:edges){
+    //その辺を加える必要があるか
+    if (!uf.same(e.u,e.v)){
+      uf.unite(e.u,e.v);
+      ret+=e.cost;
+    }
+  }
+  return ret;
+}
+
+
+int main() {
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+  constexpr char endl = '\n';
+  
+  ll n, x, y, c, ans;
+  cin >> n;
+  vector<Edge> edges;
+  Edge e;
+  REP(i, n) {
+    cin >> x >> y >> c;
+    e.u=x;
+    e.v=y;
+    e.cost=c;
+    edges.PB(e);
+  }
+  sort(edges.begin(), edges.end());
+  ans = Kruskal(edges, n);
+  cout << ans << '\n';
+}
+```
+
+
 ### その他マクロ
 ```
 #include<bits/stdc++.h>
