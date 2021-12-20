@@ -30,8 +30,8 @@ int main() {
     cin >> a[i];
   }
 
+  cout << setprecision(16) << fixed;
   cout << ans << '\n';
-  //cout << setprecision(16) << ans << '\n';
 }
 ```
 
