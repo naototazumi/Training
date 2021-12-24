@@ -13,8 +13,8 @@ https://atcoder.jp/contests/practice
 #define PB push_back
 #define MP make_pair
 using namespace std;
-using P = pair<ll,ll>;
 using ll = long long;
+using P = pair<ll,ll>;
 vector<vector<ll>> G;
 vector<ll> Map;
 ll inf=1e18;
